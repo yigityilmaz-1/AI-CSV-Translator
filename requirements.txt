@@ -1,0 +1,8 @@
+streamlit
+pandas
+openai
+time
+os
+sys
+tempfile
+subprocess
