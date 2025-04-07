@@ -6,7 +6,8 @@ import os
 import sys
 
 # Ensure UTF-8 encoding on Windows terminals
-sys.stdout.reconfigure(encoding='utf-8')
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding='utf-8')
 
 # --- Argümanları al ---
 parser = argparse.ArgumentParser(description="Genel Amaçlı AI CSV Çevirici")
@@ -17,6 +18,11 @@ parser.add_argument('--languages', required=True, help='Hedef diller (virgül il
 parser.add_argument('--prompt', required=True, help='Kullanıcı tanımlı prompt, {lang} yerine dil kodu gelecek')
 parser.add_argument('--api_key', required=True, help='OpenAI API anahtarı')
 args = parser.parse_args()
+
+# --- Check input file ---
+if not os.path.isfile(args.input):
+    print(f"Error: Input file '{args.input}' does not exist.")
+    sys.exit(1)
 
 # --- Ayarlar ---
 openai.api_key = args.api_key
@@ -37,7 +43,7 @@ for lang in languages:
             full_prompt = f"{prompt_full}\n\nText:\n{row[args.column]}"
 
             response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4-turbo",
                 messages=[{"role": "user", "content": full_prompt}]
             )
 
@@ -50,6 +56,9 @@ for lang in languages:
             continue
 
 # --- Kaydet ---
-os.makedirs(os.path.dirname(args.output), exist_ok=True)
+output_dir = os.path.dirname(args.output)
+if output_dir and not os.path.exists(output_dir):
+    os.makedirs(output_dir, exist_ok=True)
+
 df.to_csv(args.output, index=False, encoding='utf-8')
 print(f"\nTranslation complete. Output saved to {args.output}")

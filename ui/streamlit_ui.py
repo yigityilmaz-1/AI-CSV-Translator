@@ -30,11 +30,13 @@ if uploaded_file:
                 df.to_csv(input_tmp.name, index=False)
                 input_path = input_tmp.name
 
-            output_path = os.path.join("output", "translated_result.csv")
-            os.makedirs("output", exist_ok=True)
+            output_dir = os.path.join(os.path.dirname(__file__), "../output")
+            os.makedirs(output_dir, exist_ok=True)
+            output_path = os.path.join(output_dir, "translated_result.csv")
 
+            translator_script = os.path.join(os.path.dirname(__file__), "../core/translator_generic.py")
             command = [
-                "python", "./core/translator_generic.py",
+                sys.executable, translator_script,
                 "--input", input_path,
                 "--output", output_path,
                 "--column", column_to_translate,
@@ -46,11 +48,13 @@ if uploaded_file:
             try:
                 result = subprocess.run(command, capture_output=True, text=True)
                 if result.returncode == 0:
-                    st.success("Translation complete ")
-                    st.download_button(" Download Translated CSV", open(output_path, "rb").read(),
+                    st.success("Translation complete!")
+                    st.download_button("Download Translated CSV", open(output_path, "rb").read(),
                                        file_name="translated_result.csv", mime="text/csv")
                 else:
                     st.error("An error occurred during translation.")
-                    st.text(result.stderr)
+                    st.text(f"Error Output:\n{result.stderr}")
+            except FileNotFoundError as e:
+                st.error(f"File not found: {e}")
             except Exception as e:
                 st.error(f"Unexpected error: {e}")
