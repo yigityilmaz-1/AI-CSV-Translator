@@ -147,8 +147,12 @@ def translate_dataframe(
             )
             
             full_prompt = f"Text to translate:\n{text}"
-            if "{lang}" not in prompt and len(prompt) > 10:
-                 full_prompt = f"Style instructions: {prompt}\n\n{full_prompt}"
+            
+            # Add user instructions if provided (ignoring brief defaults if we want, but better to just use it)
+            # We replace {lang} placeholder with generic term for the multi-target context
+            style_instructions = prompt.replace("{lang}", "the target languages")
+            if len(style_instructions) > 10:
+                 full_prompt = f"Instructions:\n{style_instructions}\n\n{full_prompt}"
 
             client = openai.OpenAI(api_key=api_key)
             

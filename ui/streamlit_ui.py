@@ -153,10 +153,29 @@ if uploaded_file:
         
         # Prompt customization
         source_lang_name = supported_langs.get(source_lang, source_lang)
-        default_prompt = f"This text is in {source_lang_name}. Please translate it into {{lang}}."
+        default_prompt = f"""You are a professional localization expert specializing in the aviation and travel industry. You are translating content for martigo.com, a premier global flight search engine.
+
+Task:
+Please translate the following {source_lang_name} text into {{lang}}.
+
+Context & Tone: 
+The translation is for an FAQ and Booking flow. The tone should be professional, user-friendly, and technically accurate.
+
+Industry Terminology: 
+You must use standard aviation industry terminology. Ensure the following terms are translated using their standard ecommerce equivalents in {{lang}}:
+- Stopover / Layover (Distinguish between short transfers and long stays).
+- One Way / Round Trip / Multi-City (Standard search types).
+- Cabin Classes (Economy, Premium Economy, Business, First Class).
+- Check-in / Boarding Pass / PNR.
+- Self-Transfer (Specifically for 'Virtual Interlining' cases like Kiwi.com).
+
+Constraint: 
+> Keep the translation natural for a flight ticket website. Do not translate brand names like 'martigo'."""
+
         prompt = st.text_area(
             "Custom Prompt",
             value=default_prompt,
+            height=300,
             help="Use {lang} as a placeholder for the target language"
         )
         
