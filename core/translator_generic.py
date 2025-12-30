@@ -59,9 +59,6 @@ def process_batch(texts: List[str], lang: str, prompt_template: str, model_confi
 
             translation = response.choices[0].message.content.strip()
             translations.append(translation)
-            # time.sleep(model_config["rate_limit"]) # Rate limit usually applies to requests, not per item if batching properly, but here we iterate one by one?
-            # actually logic below says "batch" but this loop processes one by one.
-            # let's keep it as is for now to avoid logic break, but user `process_batch` name is misleading as it processes a list one by one.
             
         except Exception as e:
             logger.error(f"Error translating item: {e}")
@@ -123,12 +120,6 @@ def translate_dataframe(
 
     # Process in batches
     texts = df_result[column].tolist()
-    batch_size = model_config["batch_size"] 
-    # NOTE: With multi-language JSON, a large batch of text items + many languages might exceed token limits or confuses the model JSON.
-    # It is safer to process ONE item at a time if we are doing many languages, OR essentially batch size 1 for the loop but keep 'batch_size' config for compatibility or reduced throughput.
-    # To ensure robust JSON parsing, let's process 1 row at a time request-wise, or small batches of rows if the user really wants speed.
-    # However, the user prompt logic below was previously effectively doing 1 item per request inside a batch loop. 
-    # Let's keep doing 1 item per request to ensure the JSON structure corresponds exactly to that item.
     
     total_items = len(texts)
     
@@ -138,9 +129,6 @@ def translate_dataframe(
         # Check for cancellation
         if cancel_event and cancel_event.is_set():
             logger.info("Translation cancelled by user")
-            # Fill remaining with empty strings or just stop? 
-            # If we break, the remaining rows in df_result are already "" (initialized at start)
-            # So we can just break and return what we have.
             break
 
         if progress_callback:
@@ -157,12 +145,6 @@ def translate_dataframe(
                 "Example output: {\"es\": \"Hola\", \"fr\": \"Bonjour\"}\n"
                 "Do NOT add any other text."
             )
-            
-            # Combine user prompt if there's custom instruction, but prioritized JSON structure
-            # If user provided a custom prompt with {lang}, it might not fit the multi-lang paradigm well.
-            # We generally ignore the custom per-lang prompt template for this optimization 
-            # OR we append it as "Context/Style instructions: ..."
-            # But simplifying: generally we just want the translation.
             
             full_prompt = f"Text to translate:\n{text}"
             if "{lang}" not in prompt and len(prompt) > 10:
@@ -199,9 +181,8 @@ def translate_dataframe(
                     
             except json.JSONDecodeError:
                 logger.error(f"Failed to parse JSON response for row {i}: {content}")
-                # Fallback or leave empty
                 
-            # Rate limit mainly per request
+            # Rate limit
             time.sleep(model_config["rate_limit"])
 
         except openai.AuthenticationError as e:

@@ -5,6 +5,8 @@ import os
 import sys
 import logging
 import traceback
+import threading
+import time
 
 # Add the project root directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -63,15 +65,6 @@ with st.sidebar:
         model_options,
         index=default_index
     )
-    
-    # Update global config with selection (NOTE: This won't affect core logic if it re-reads config.py, 
-    # but currently core logic reads config once. 
-    # To fix this properly, we should pass 'model' to translate_dataframe. 
-    # For now, let's update strict 'model' param in translate_dataframe call below)
-    # Note: These sliders update the general config in memory effectively, but since config.py is static, 
-    # they don't persist accurately for the library call unless we pass them or modify the unpredictable global state.
-    # For now, we rely on the fact that we are not threading multiple users in this local app.
-    # Ideally, we should pass model config to the translation function.
     
     batch_size = st.slider("Batch Size", 1, 50, model_config["batch_size"])
     rate_limit = st.slider("Rate Limit (seconds)", 0.1, 5.0, model_config["rate_limit"], 0.1)
@@ -176,9 +169,6 @@ if uploaded_file:
             st.session_state.cancel_event = None
         if "translation_status" not in st.session_state:
             st.session_state.translation_status = {"msg": "", "progress": 0.0, "done": False, "result_df": None, "error": None}
-        
-        import threading
-        import time
 
         def run_translation_thread(df, col, langs, prmt, key, mdl, status_dict, stop_event):
             try:
@@ -263,13 +253,11 @@ if uploaded_file:
                     st.write("### 🏁 Translation Results")
                     st.dataframe(translated_df.head())
                     
-                    # Download
-                    csv_filename = f"translated_{os.path.splitext(uploaded_file.name)[0]}.csv"
                     csv = translated_df.to_csv(index=False).encode('utf-8')
                     st.download_button(
                         label="📥 Download Translated CSV",
                         data=csv,
-                        file_name=csv_filename,
+                        file_name=f"translated_{os.path.splitext(uploaded_file.name)[0]}.csv",
                         mime="text/csv"
                     )
                 

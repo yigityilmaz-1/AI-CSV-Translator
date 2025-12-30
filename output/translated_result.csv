@@ -1,0 +1,308 @@
+Code,Description,Lang,Description_Translated_th,Description_Translated_ms
+010,{0}x{1} kg Carry-on,en,{0}x{1} กก. ขึ้นเครื่องแบบไม่เสียค่าใช้จ่าย,{0}x{1} kg Bagasi Kabin
+015,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+016,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+017,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+018,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+019,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01F,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01G,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01H,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01I,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01J,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01K,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01L,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01M,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01N,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01O,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01P,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01Q,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01R,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระฝาก,{0}x{1} kg Bawaan Kabin
+01T,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01U,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+01X,Meal & Beverage,en,ข้อเสนออาหารและเครื่องดื่ม,Makanan & Minuman
+01Z,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+027,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+02A,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02B,Meal & Beverage,en,มื้ออาหารและเครื่องดื่ม,Makanan & Minuman
+02C,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02D,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02E,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02F,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02G,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02H,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02I,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02J,Meal & Beverage,en,บริการอาหารและเครื่องดื่ม,Makanan & Minuman
+02K,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02M,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+02T,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+035,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+03I,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+03J,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+03Q,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Bagasi Daftar
+048,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าที่เช็คิน,{0}x{1} kg Beg Daftar
+04J,Personel Item,en,รายการส่วนตัว,Barang Peribadi
+050,Seat choice included,en,การเลือกที่นั่งรวมอยู่แล้ว,Pilihan tempat duduk termasuk
+055,Change Fee,en,ค่าธรรมเนียมการเปลี่ยนแปลง,Yuran Perubahan
+056,Refundable Ticket,en,ตั๋วที่สามารถขอคืนได้,Tiket Boleh Dikembalikan Wang
+059,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+05D,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+05W,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+05Z,Seat choice included,en,การเลือกที่นั่งรวมอยู่แล้ว,Pilihan tempat duduk termasuk
+063,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+066,Meal & Beverage,en,มื้ออาหารและเครื่องดื่ม,Makanan & Minuman
+068,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+06I,Change Before Departure,en,เปลี่ยนก่อนการออกเดินทาง,Tukar Sebelum Berlepas
+06J,Change After Departure,en,เปลี่ยนแปลงหลังจากออกเดินทาง,Tukar Selepas Berlepas
+06K,Refund Before Departure,en,คืนเงินก่อนเดินทาง,Pengembalian Wang Sebelum Berlepas
+06L,Refund After Departure,en,การคืนเงินหลังการเดินทาง,Pengembalian Wang Selepas Berlepas
+072,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Bagasi Berdaftar
+076,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+077,Personel Item,en,รายการส่วนตัว,Barangan Peribadi
+07H,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+07J,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระพกพา,{0}x{1} kg Bagasi Kabin
+08A,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระเครื่องมือ,{0}x{1} kg Bagasi Kabin
+08B,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่ใส่ในตู้เก็บของเหนือศีรษะ,{0}x{1} kg Bawaan Kabin
+08G,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+08K,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+08R,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+08S,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+09B,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bawaan Kabin
+09O,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+09P,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระเครื่องบิน,{0}x{1} kg Bagasi Kabin
+09Q,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระเครื่องมือแบบถือได้,{0}x{1} kg Bagasi Kabin
+09V,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระโดยสาร,{0}x{1} kg Bagasi Kabin
+0A3,Refundable Ticket,en,ตั๋วที่คืนเงินได้,Tiket Boleh Dikembalikan Wang
+0AA,PRE PAID BAGGAGE,en,กระเป๋าที่ชำระเงินล่วงหน้า,BAGASI PRA BAYAR
+0AI,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AJ,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AK,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AL,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AM,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AN,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AO,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AP,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AQ,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AR,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AS,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AT,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AU,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0AV,Beverage,en,เครื่องดื่ม,Minuman
+0AW,Beverage,en,เครื่องดื่ม,Minuman
+0AX,Beverage,en,เครื่องดื่ม,Minuman
+0B3,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0B5,Seat choice included,en,รวมการเลือกที่นั่งแล้ว,Pilihan tempat duduk termasuk
+0C1,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าที่เช็คอิน,{0}x{1} kg Bagasi berdaftar
+0C2,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คแล้ว,{0}x{1} kg Beg Daftar
+0C3,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0C4,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่บรรจุแล้ว,{0}x{1} kg Beg Daftar
+0C5,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0C6,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0C7,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0C8,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0C9,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Bagasi berdaftar
+0CC,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่ลงทะเบียน,Beg terdaftar {0}x{1} kg
+0CD,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0CE,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0CF,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0CG,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Bagasi berdaftar
+0CH,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าที่เช็คอิน,{0}x{1} kg Beg Daftar
+0CI,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0CJ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0CK,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็ค-in,{0}x{1} kg Beg Daftar
+0CU,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0D4,GOLFE QUIPMENT 15 Kg,en,อุปกรณ์กอล์ฟ 15 กิโลกรัม,PERALATAN GOLF 15 Kg
+0DE,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่โหลดใต้ท้องเครื่อง,{0}x{1} kg Bagasi berdaftar
+0DF,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0DK,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0DQ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0EL,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0EN,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0EP,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0EQ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Bagasi Berdaftar
+0ER,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Bagasi Terdaftar
+0ES,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Bagasi Berdaftar
+0ET,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar Imbas
+0EU,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คิน,{0}x{1} kg Bagasi berdaftar
+0EV,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0EW,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คแล้ว,{0}x{1} kg Beg Daftar
+0EX,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าเช็คอิน,{0}x{1} kg Beg Diperiksa
+0EY,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0EZ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับการเช็คกระเป๋า,{0}x{1} kg Beg Daftar
+0FA,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Bagasi berdaftar
+0FB,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คแล้ว,{0}x{1} kg Beg Daftar
+0FC,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0FD,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็ค-in,{0}x{1} kg Beg Daftar
+0FE,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0FF,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0FG,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0FH,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่ลงทะเบียน,{0}x{1} kg Beg Daftar
+0FI,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0FJ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็คิน,{0}x{1} kg Bagasi Berdaftar
+0FK,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับบรรจุในห้องเก็บสัมภาระ,{0}x{1} kg Beg Daftar
+0FL,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่โหลดเข้าเครื่อง,{0}x{1} kg Bagasi Berdaftar
+0FM,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่โหลดลงใต้ท้องเครื่อง,{0}x{1} kg Beg Daftar Kemasukan
+0FN,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Bagasi berdaftar
+0G7,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0G8,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0G9,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0GN,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0GO,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับการเช็คกระเป๋า,{0}x{1} kg Beg Daftar
+0GP,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0GT,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระโดยสาร,{0}x{1} kg Bagasi Kabin
+0GX,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Bagasi berdaftar
+0GY,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0GZ,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Bagasi Berdaftar
+0H6,EXCESS baggage WEIGHTFEE,en,ค่าธรรมเนียมน้ำหนักสัมภาระเกิน,Yuran Bagasi Berlebihan
+0HA,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HB,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HC,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HD,Meal & Beverage,en,อาหารและเครื่องดื่ม,Hidangan & Minuman
+0HE,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HF,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HG,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HH,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HI,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HJ,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HK,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HL,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HM,Meal & Beverage,en,อาหารและเครื่องดื่ม,Hidangan & Minuman
+0HN,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HO,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0HP,Meal & Beverage,en,มื้ออาหารและเครื่องดื่ม,Makanan & Minuman
+0I0,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0I5,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Bagasi berdaftar
+0I6,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0I7,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0I8,{0}x{1} kg Checked bag,en,{0}x{1} กก. สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0IZ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Bagasi Berdaftar
+0J0,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0J1,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0J2,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0J3,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0J6,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าฝาก,{0}x{1} kg Beg Daftar
+0JH,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็ค-in,{0}x{1} kg Beg Daftar
+0JJ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คิน,{0}x{1} kg Beg Daftar
+0JL,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0JM,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็ค-in,{0}x{1} kg Bagasi berdaftar
+0JN,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JO,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JP,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าเช็ค-in,{0}x{1} kg Beg Daftar
+0JQ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JT,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JU,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JV,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0JW,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0JZ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็ค-in,{0}x{1} kg Bagasi Berdaftar
+0K0,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+0K1,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0K2,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Bagasi Daftar
+0KB,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0KX,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0L5,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bagasi Kabin
+0L7,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+0LD,SEAFOOD MEAL 1,en,มื้ออาหารทะเล 1,HIDANGAN MAKANAN LAUT 1
+0LE,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LJ,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LL,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0LN,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0LO,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LP,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LQ,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LR,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LT,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0LX,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Bagasi Berdaftar
+0M1,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0M2,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพาได้,{0}x{1} kg Bagasi Kabin
+0M3,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระเครื่องบิน,{0}x{1} kg Bawaan Kabin
+0M4,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bagasi Kabin
+0M5,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0M6,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0M8,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Diperiksa
+0MB,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+0MF,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0MG,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+0MJ,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MK,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่ลงทะเบียน/check-in,{0}x{1} kg Beg Daftar
+0ML,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือติดตัว,{0}x{1} kg Bagasi Kabin
+0MM,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระโดยไม่ต้องโหลดลงใต้ท้องเครื่อง,{0}x{1} kg Bagasi Kabin
+0MO,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MP,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MQ,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MR,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม กระเป๋าถือ,{0}x{1} kg Bagasi Kabin
+0MS,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bawaan Kabin
+0MT,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระพกพา,{0}x{1} kg Bagasi Kabin
+0MU,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MW,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bawaan Kabin
+0MX,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MY,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+0MZ,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่องได้,{0}x{1} kg Bagasi Kabin
+0NE,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็กอิน,{0}x{1} kg Bagasi berdaftar
+0NN,Not Refundable,en,ไม่สามารถขอเงินคืนได้,Tidak Dapat Dikembalikan
+0P1,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็คอิน,{0}x{1} kg Bagasi berdaftar
+0PO,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+0PZ,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+1AB,Seat choice for a fee,en,ค่าธรรมเนียมสำหรับการเลือกที่นั่ง,Pilihan tempat duduk dengan bayaran
+063,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+A20,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าที่เช็ค-in,{0}x{1} kg Beg Daftar
+A23,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Diperiksa
+A30,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+A35,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็ค-in,{0}x{1} kg Bagasi Berdaftar
+A40,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+A45,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+A4P,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+A50,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+A60,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับกระเป๋าที่ลงทะเบียน,{0}x{1} kg Beg Diperiksa
+BAG_INTER,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับการชั่งน้ำหนักแบบเช็คอิน,{0}x{1} kg Beg Daftar
+BAG_INTER_HND,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพา,{0}x{1} kg Bagasi Kabin
+BAG_INTER_PER,Personel Item,en,รายการส่วนตัว,Barang Peribadi
+C01,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bawaan Kabin
+CAO,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+CB1,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่พกพาได้,{0}x{1} kg Bawaan Kabin
+CB2,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกพาได้,{0}x{1} kg Bawaan Kabin
+CBC,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Beg Tangan
+CBU,Personel Item,en,รายการส่วนตัว,Barangan Peribadi
+CBY,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+CML,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+CY1,{0}x{1} kg Carry-on,en,น้ำหนักสัมภาระถือขึ้นเครื่อง {0}x{1} กิโลกรัม,{0}x{1} kg Bagasi Kabin
+CY2,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระที่นำขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
+FBC,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+FBF,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็ค-in,{0}x{1} kg Bagasi berdaftar
+FBP,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+FBY,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าที่เช็คอิน,{0}x{1} kg Bagasi berdaftar
+IB3,Seat choice included,en,รวมการเลือกที่นั่ง,Pilihan tempat duduk termasuk
+IB4,Seat choice for a fee,en,ค่าธรรมเนียมสำหรับการเลือกที่นั่ง,Pilihan tempat duduk dengan bayaran
+IB5,Seat choice included,en,ที่นั่งเลือกได้รวมอยู่แล้ว,Pilihan tempat duduk termasuk
+IB6,Seat choice included,en,ตัวเลือกที่นั่งรวมแล้ว,Pilihan tempat duduk termasuk
+IB7,Refundable Ticket,en,ตั๋วที่คืนเงินได้,Tiket Boleh Dikembalikan Wang
+IB8,Not Refundable,en,ไม่สามารถขอคืนเงินได้,Tidak Dapat Dikembalikan
+IB9,Changeable Ticket,en,ตั๋วที่สามารถเปลี่ยนแปลงได้,Tiket Boleh Ubah
+IC1,Carry-on Included,en,กระเป๋าถือพกพาได้รวมอยู่แล้ว,Termasuk Kabin Bagasi
+IC3,Meal & Beverage,en,อาหารและเครื่องดื่ม,Makanan & Minuman
+IN5,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+OST,Seat choice included,en,การเลือกที่นั่งรวมอยู่แล้ว,Pilihan tempat duduk termasuk
+OU1,Name Change,en,การเปลี่ยนชื่อ,Penukaran Nama
+OU2,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระโดยสาร,{0}x{1} kg Bagasi Kabin
+OU3,{0}x{1} kg Carry-on,en,{0}x{1} กก. สัมภาระที่พกติดตัว,{0}x{1} kg Bagasi Kabin
+P01,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+P02,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+P03,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+P04,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+P05,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+P20,{0}x{1} kg Checked bag,en,{0}x{1} กก. กระเป๋าเช็คอิน,{0}x{1} kg Beg Daftar
+P23,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็กอิน,{0}x{1} kg Beg Daftar
+P32,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็ค-in,{0}x{1} kg Beg Daftar
+PC1,{0}x{1} kg Checked bag,en,{0}x{1} กก. สัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+PC2,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สัมภาระที่เช็กอิน,{0}x{1} kg Bagasi berdaftar
+A25,{0}x{1} kg Checked bag,en,{0}x{1} กิโลกรัม สำหรับสัมภาระที่เช็คอิน,{0}x{1} kg Beg Daftar
+PEA,Exchange true,en,แลกเปลี่ยนจริง,Tukar benar
+PEP,Exchange false,en,แลกเปลี่ยนไม่ได้,Tukar salah
+PRA,Refund true,en,คืนเงินได้,Pengembalian dana benar
+PRP,Refund false,en,คืนเงินไม่ได้,Pengembalian dana tidak tersedia
+PRS,Seat choice included,en,การเลือกที่นั่งรวมอยู่ในราคา,Pilihan tempat duduk termasuk
+PSA,Seat choice included,en,ตัวเลือกที่นั่งรวมอยู่แล้ว,Pilihan tempat duduk termasuk
+PSL,Personel Item,en,รายการส่วนตัว,Barang Peribadi
+SA4,Seat choice included,en,การเลือกที่นั่งรวมอยู่แล้ว,Pilihan tempat duduk termasuk
+SDC,Changeable Ticket,en,ตั๋วที่เปลี่ยนได้,Tiket Boleh Ubah
+BAG,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระโดยสาร,{0}x{1} kg Bagasi Kabin
+BAG_1,{0}x{1} kg Carry-on,en,{0}x{1} กิโลกรัม สัมภาระถือขึ้นเครื่อง,{0}x{1} kg Bagasi Kabin
