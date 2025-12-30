@@ -3,8 +3,8 @@ from typing import List, Dict
 
 # Default configuration
 DEFAULT_CONFIG = {
-    "model": "gpt-4o-mini",
-    "available_models": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
+    "model": "gpt-5-mini",
+    "available_models": ["gpt-5-mini", "gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
     "batch_size": 10,
     "rate_limit": 1.2,
     "max_retries": 3,
