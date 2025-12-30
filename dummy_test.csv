@@ -1,0 +1,6 @@
+id,text,category
+1,Hello world,greeting
+2,Good morning,greeting
+3,How are you?,question
+4,Thank you,polite
+5,Goodbye,greeting

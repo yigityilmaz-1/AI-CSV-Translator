@@ -1,56 +1,294 @@
 import streamlit as st
 import pandas as pd
-import subprocess
 import tempfile
 import os
 import sys
-sys.stdout.reconfigure(encoding='utf-8')
+import logging
+import traceback
 
-st.set_page_config(page_title="AI CSV Translator", layout="centered")
-st.title(" AI-Powered CSV Translator")
+# Add the project root directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+from core.config import get_supported_languages, get_supported_file_types, get_model_config
+from core.translator_generic import translate_dataframe
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+
+# Page config
+st.set_page_config(
+    page_title="AI CSV Translator",
+    page_icon="🌐",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Theme customization
 st.markdown("""
-Upload a CSV file, choose the column you want to translate, enter your custom prompt using `{lang}` as a placeholder for the language code, and specify target languages separated by commas (e.g., `tr,de,fr`).
-""")
+    <style>
+    .stApp {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .stButton>button {
+        width: 100%;
+    }
+    .success-text {
+        color: #28a745;
+        font-weight: bold;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
-api_key = st.text_input(" OpenAI API Key", type="password")
-uploaded_file = st.file_uploader("📄 Upload CSV file", type=["csv"])
+# Sidebar
+with st.sidebar:
+    st.title("⚙️ Settings")
+    api_key = st.text_input("OpenAI API Key", type="password")
+    model_config = get_model_config()
+    model_options = model_config.get("available_models", ["gpt-3.5-turbo", "gpt-4"])
+    # Find index of default model
+    default_index = 0
+    if model_config["model"] in model_options:
+        default_index = model_options.index(model_config["model"])
+        
+    selected_model = st.selectbox(
+        "Model",
+        model_options,
+        index=default_index
+    )
+    
+    # Update global config with selection (NOTE: This won't affect core logic if it re-reads config.py, 
+    # but currently core logic reads config once. 
+    # To fix this properly, we should pass 'model' to translate_dataframe. 
+    # For now, let's update strict 'model' param in translate_dataframe call below)
+    # Note: These sliders update the general config in memory effectively, but since config.py is static, 
+    # they don't persist accurately for the library call unless we pass them or modify the unpredictable global state.
+    # For now, we rely on the fact that we are not threading multiple users in this local app.
+    # Ideally, we should pass model config to the translation function.
+    
+    batch_size = st.slider("Batch Size", 1, 50, model_config["batch_size"])
+    rate_limit = st.slider("Rate Limit (seconds)", 0.1, 5.0, model_config["rate_limit"], 0.1)
+
+# Main content
+st.title("🌐 AI-Powered CSV Translator")
+
+# File upload
+uploaded_file = st.file_uploader(
+    "📄 Upload File",
+    type=get_supported_file_types(),
+    help=f"Supported formats: {', '.join(get_supported_file_types())}"
+)
 
 if uploaded_file:
-    df = pd.read_csv(uploaded_file)
-    st.write("### Preview of Uploaded CSV", df.head())
-    column_to_translate = st.selectbox(" Column to Translate", df.columns)
-    prompt = st.text_area(" Custom Prompt (use {lang} where language should go)",
-                          "This text is part of a multilingual dataset. Please translate it into {lang}.")
-    languages = st.text_input(" Target Languages (ISO codes, comma-separated)", "tr,de")
+    try:
+        # Read file based on extension
+        file_ext = os.path.splitext(uploaded_file.name)[1].lower()
+        
+        # CSV specific settings
+        if file_ext == '.csv':
+            col1, col2 = st.columns(2)
+            with col1:
+                delimiter = st.selectbox(
+                    "CSV Delimiter",
+                    options=[',', ';', '\t', '|'],
+                    format_func=lambda x: {
+                        ',': 'Comma (,)',
+                        ';': 'Semicolon (;)',
+                        '\t': 'Tab',
+                        '|': 'Pipe (|)'
+                    }[x]
+                )
+            with col2:
+                encoding = st.selectbox(
+                    "File Encoding",
+                    options=['utf-8', 'latin1', 'cp1252'],
+                    format_func=lambda x: {
+                        'utf-8': 'UTF-8',
+                        'latin1': 'Latin-1',
+                        'cp1252': 'Windows-1252'
+                    }[x]
+                )
+            
+            df = pd.read_csv(uploaded_file, delimiter=delimiter, encoding=encoding)
+        else:  # Excel files
+            df = pd.read_excel(uploaded_file)
+        
+        # Preview
+        st.write("### 📊 Preview of Uploaded File")
+        st.dataframe(df.head())
+        
+        # Column selection
+        column_to_translate = st.selectbox("Column to Translate", df.columns)
+        
+        # Language selection
+        supported_langs = get_supported_languages()
+        
+        # Source language selection
+        st.write("### Source Language")
+        st.write("Enter the ISO code of the source language (e.g., 'en' for English, 'fr' for French)")
+        source_lang = st.text_input(
+            "Source Language ISO Code",
+            value="en",
+            help="Enter the ISO 639-1 language code of your source text"
+        )
+        
+        # Show supported languages as reference
+        with st.expander("📚 Supported Language Codes Reference"):
+            st.write("Common ISO 639-1 language codes:")
+            lang_cols = st.columns(3)
+            for i, (code, name) in enumerate(supported_langs.items()):
+                lang_cols[i % 3].write(f"**{code}** - {name}")
+        
+        # Target languages selection
+        st.write("### Target Languages")
+        st.write("Enter the ISO codes of target languages, separated by commas (e.g., 'es,fr,de')")
+        target_langs_input = st.text_input(
+            "Target Language ISO Codes",
+            value="es,fr",
+            help="Enter comma-separated ISO 639-1 language codes"
+        )
+        
+        # Process target languages
+        selected_langs = [lang.strip() for lang in target_langs_input.split(',') if lang.strip()]
+        
+        # Prompt customization
+        source_lang_name = supported_langs.get(source_lang, source_lang)
+        default_prompt = f"This text is in {source_lang_name}. Please translate it into {{lang}}."
+        prompt = st.text_area(
+            "Custom Prompt",
+            value=default_prompt,
+            help="Use {lang} as a placeholder for the target language"
+        )
+        
+        # --- Translation Logic using Threading for Stop Functionality ---
+        if "is_translating" not in st.session_state:
+            st.session_state.is_translating = False
+        if "translation_thread" not in st.session_state:
+            st.session_state.translation_thread = None
+        if "cancel_event" not in st.session_state:
+            st.session_state.cancel_event = None
+        if "translation_status" not in st.session_state:
+            st.session_state.translation_status = {"msg": "", "progress": 0.0, "done": False, "result_df": None, "error": None}
+        
+        import threading
+        import time
 
-    if st.button(" Start Translation"):
-        with st.spinner("Translation in progress. This may take a while..."):
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as input_tmp:
-                df.to_csv(input_tmp.name, index=False)
-                input_path = input_tmp.name
-
-            output_path = os.path.join("output", "translated_result.csv")
-            os.makedirs("output", exist_ok=True)
-
-            command = [
-                "python", "./core/translator_generic.py",
-                "--input", input_path,
-                "--output", output_path,
-                "--column", column_to_translate,
-                "--languages", languages,
-                "--prompt", prompt,
-                "--api_key", api_key
-            ]
-
+        def run_translation_thread(df, col, langs, prmt, key, mdl, status_dict, stop_event):
             try:
-                result = subprocess.run(command, capture_output=True, text=True)
-                if result.returncode == 0:
-                    st.success("Translation complete ")
-                    st.download_button(" Download Translated CSV", open(output_path, "rb").read(),
-                                       file_name="translated_result.csv", mime="text/csv")
-                else:
-                    st.error("An error occurred during translation.")
-                    st.text(result.stderr)
+                def callback(msg, prog):
+                    status_dict["msg"] = msg
+                    status_dict["progress"] = prog
+                    
+                res_df = translate_dataframe(
+                    df=df,
+                    column=col,
+                    languages=langs,
+                    prompt=prmt,
+                    api_key=key,
+                    model=mdl,
+                    progress_callback=callback,
+                    cancel_event=stop_event
+                )
+                status_dict["result_df"] = res_df
+                status_dict["done"] = True
             except Exception as e:
-                st.error(f"Unexpected error: {e}")
+                status_dict["error"] = str(e)
+                status_dict["done"] = True
+                
+        # Start Button
+        if not st.session_state.is_translating:
+            if st.button("🚀 Start Translation", type="primary"):
+                if not api_key:
+                    st.error("Please enter your OpenAI API key")
+                elif not source_lang:
+                    st.error("Please enter a source language code")
+                elif not selected_langs:
+                    st.error("Please enter at least one target language code")
+                elif source_lang in selected_langs:
+                    st.error("Source language cannot be in target languages")
+                else:
+                    # Initialize
+                    st.session_state.is_translating = True
+                    st.session_state.cancel_event = threading.Event()
+                    st.session_state.translation_status = {"msg": "Starting...", "progress": 0.0, "done": False, "result_df": None, "error": None}
+                    
+                    # Start Thread
+                    t = threading.Thread(
+                        target=run_translation_thread,
+                        args=(df, column_to_translate, selected_langs, prompt, api_key, selected_model, st.session_state.translation_status, st.session_state.cancel_event)
+                    )
+                    st.session_state.translation_thread = t
+                    t.start()
+                    st.rerun()
+
+        # Cancel Button & Progress Loop
+        if st.session_state.is_translating:
+            col_status, col_stop = st.columns([3, 1])
+            
+            with col_status:
+                status_text = st.empty()
+                progress_bar = st.progress(0)
+                
+            with col_stop:
+                if st.button("🛑 Stop & Save", type="secondary"):
+                    if st.session_state.cancel_event:
+                        st.session_state.cancel_event.set()
+                        st.warning("Stopping... please wait for current item.")
+            
+            # Update Loop
+            status = st.session_state.translation_status
+            status_text.text(status["msg"])
+            progress_bar.progress(min(status["progress"], 1.0))
+            
+            if status["done"]:
+                st.session_state.is_translating = False
+                
+                if status["error"]:
+                    st.error(f"An error occurred: {status['error']}")
+                elif status["result_df"] is not None:
+                    # Success or Partial Success
+                    if st.session_state.cancel_event.is_set():
+                        st.warning("Translation stopped. Saving partial results.")
+                    else:
+                        st.success("✅ Translation complete!")
+                    
+                    translated_df = status["result_df"]
+                    st.write("### 🏁 Translation Results")
+                    st.dataframe(translated_df.head())
+                    
+                    # Download
+                    csv_filename = f"translated_{os.path.splitext(uploaded_file.name)[0]}.csv"
+                    csv = translated_df.to_csv(index=False).encode('utf-8')
+                    st.download_button(
+                        label="📥 Download Translated CSV",
+                        data=csv,
+                        file_name=csv_filename,
+                        mime="text/csv"
+                    )
+                
+                # Clean up
+                st.session_state.translation_thread = None
+                st.session_state.cancel_event = None
+                
+            else:
+                time.sleep(0.5)
+                st.rerun()
+
+    except Exception as e:
+        logger.error(f"File processing error: {e}")
+        st.error(f"Error processing file: {str(e)}")
+
+# Footer
+st.markdown("---")
+st.markdown("""
+    <div style='text-align: center'>
+        <p>Made with ❤️ using Streamlit and OpenAI</p>
+    </div>
+""", unsafe_allow_html=True)

@@ -1,0 +1,12 @@
+LICENSE
+setup.py
+ai_csv_translator.egg-info/PKG-INFO
+ai_csv_translator.egg-info/SOURCES.txt
+ai_csv_translator.egg-info/dependency_links.txt
+ai_csv_translator.egg-info/requires.txt
+ai_csv_translator.egg-info/top_level.txt
+core/__init__.py
+core/config.py
+core/translator_generic.py
+ui/__init__.py
+ui/streamlit_ui.py
