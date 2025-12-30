@@ -67,8 +67,16 @@ with st.sidebar:
     )
     
     batch_size = st.slider("Batch Size", 1, 50, model_config["batch_size"])
-    rate_limit = st.slider("Rate Limit (seconds)", 0.1, 5.0, model_config["rate_limit"], 0.1)
-
+    rate_limit = st.slider("Rate Limit (sleep per item)", 0.0, 5.0, model_config["rate_limit"], 0.1)
+    max_parallel = st.slider("Max Parallel Clicks (Speed)", 1, 20, model_config.get("max_parallel_requests", 5))
+    
+    # Config overrides for this session
+    req_config = {
+        "batch_size": batch_size,
+        "rate_limit": rate_limit,
+        "max_parallel_requests": max_parallel
+    }
+    
 # Main content
 st.title("🌐 AI-Powered CSV Translator")
 
@@ -117,8 +125,35 @@ if uploaded_file:
         st.write("### 📊 Preview of Uploaded File")
         st.dataframe(df.head())
         
+        # heuristic to find best column
+        best_col_idx = 0
+        max_avg_len = 0
+        
+        for i, col in enumerate(df.columns):
+            # Skip likely non-content columns by name
+            lower_col = col.lower()
+            if "id" in lower_col and "content" not in lower_col: continue
+            if "date" in lower_col: continue
+            if "guid" in lower_col: continue
+            if "code" in lower_col: continue # 'common_languages' code is usually not what we want
+            
+            # Check content
+            try:
+                if df[col].dtype == 'object':
+                    avg_len = df[col].astype(str).str.len().mean()
+                    if avg_len > max_avg_len:
+                        max_avg_len = avg_len
+                        best_col_idx = i
+            except:
+                pass
+
         # Column selection
-        column_to_translate = st.selectbox("Column to Translate", df.columns)
+        column_to_translate = st.selectbox(
+            "Column to Translate", 
+            df.columns,
+            index=best_col_idx,
+            help="Select the column containing the text you want to translate"
+        )
         
         # Language selection
         supported_langs = get_supported_languages()
@@ -189,12 +224,15 @@ Constraint:
         if "translation_status" not in st.session_state:
             st.session_state.translation_status = {"msg": "", "progress": 0.0, "done": False, "result_df": None, "error": None}
 
-        def run_translation_thread(df, col, langs, prmt, key, mdl, status_dict, stop_event):
+        def run_translation_thread(df, col, langs, prmt, key, mdl, status_dict, stop_event, r_cfg, original_file_name):
             try:
                 def callback(msg, prog):
                     status_dict["msg"] = msg
                     status_dict["progress"] = prog
                     
+                # Generate a recovery path in the system's temporary directory
+                recovery_path = os.path.join(tempfile.gettempdir(), f"recovery_{original_file_name}")
+                
                 res_df = translate_dataframe(
                     df=df,
                     column=col,
@@ -203,14 +241,16 @@ Constraint:
                     api_key=key,
                     model=mdl,
                     progress_callback=callback,
-                    cancel_event=stop_event
+                    cancel_event=stop_event,
+                    request_config=r_cfg,
+                    auto_save_path=recovery_path
                 )
                 status_dict["result_df"] = res_df
                 status_dict["done"] = True
             except Exception as e:
                 status_dict["error"] = str(e)
                 status_dict["done"] = True
-                
+
         # Start Button
         if not st.session_state.is_translating:
             if st.button("🚀 Start Translation", type="primary"):
@@ -231,7 +271,7 @@ Constraint:
                     # Start Thread
                     t = threading.Thread(
                         target=run_translation_thread,
-                        args=(df, column_to_translate, selected_langs, prompt, api_key, selected_model, st.session_state.translation_status, st.session_state.cancel_event)
+                        args=(df, column_to_translate, selected_langs, prompt, api_key, selected_model, st.session_state.translation_status, st.session_state.cancel_event, req_config, uploaded_file.name)
                     )
                     st.session_state.translation_thread = t
                     t.start()

@@ -7,6 +7,7 @@ DEFAULT_CONFIG = {
     "available_models": ["gpt-5-mini", "gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
     "batch_size": 10,
     "rate_limit": 1.2,
+    "max_parallel_requests": 5,
     "max_retries": 3,
     "supported_languages": {
         # Common languages
@@ -351,5 +352,6 @@ def get_model_config() -> Dict:
         "available_models": DEFAULT_CONFIG["available_models"],
         "batch_size": DEFAULT_CONFIG["batch_size"],
         "rate_limit": DEFAULT_CONFIG["rate_limit"],
+        "max_parallel_requests": DEFAULT_CONFIG.get("max_parallel_requests", 5),
         "max_retries": DEFAULT_CONFIG["max_retries"]
     } 

@@ -74,7 +74,10 @@ def translate_dataframe(
     api_key: str,
     model: Optional[str] = None,
     progress_callback: Optional[Callable[[str, float], None]] = None,
-    cancel_event: Optional[Any] = None
+    cancel_event: Optional[Any] = None,
+    request_config: Optional[Dict[str, Any]] = None,
+    auto_save_path: Optional[str] = None,
+    auto_save_interval: int = 10
 ) -> pd.DataFrame:
     """
     Translate a specific column in a DataFrame to multiple languages.
@@ -88,6 +91,9 @@ def translate_dataframe(
         model: Optional model name to override config
         progress_callback: Optional callback function(message, percentage)
         cancel_event: Optional threading.Event to signal cancellation
+        request_config: Optional dictionary to override batch_size, rate_limit, max_parallel
+        auto_save_path: Optional path to save progress CSV
+        auto_save_interval: Save every N rows
     
     Returns:
         DataFrame with added translation columns
@@ -98,6 +104,10 @@ def translate_dataframe(
     # Override model if provided
     if model:
         model_config["model"] = model
+        
+    # Apply request-specific config overrides (this ensures session isolation)
+    if request_config:
+        model_config.update(request_config)
         
     languages = validate_languages(languages)
     
@@ -125,77 +135,125 @@ def translate_dataframe(
     
     logger.info(f"Starting multi-language translation for {len(languages)} languages...")
     
-    for i, text in enumerate(texts):
-        # Check for cancellation
-        if cancel_event and cancel_event.is_set():
-            logger.info("Translation cancelled by user")
-            break
-
-        if progress_callback:
-            progress_callback(f"Translating row {i+1}/{total_items}...", (i) / total_items)
+    import concurrent.futures
+    
+    # Helper for single row processing
+    def process_row(index, text, targets_json, prmt, cfg, apikey, c_event):
+        # Stop immediately if cancelled
+        if c_event and c_event.is_set():
+            return index, None
             
         if pd.isna(text) or str(text).strip() == "":
-            continue
+            return index, None
 
-        try:
-            # Construct system prompt for JSON
-            system_prompt = (
-                f"You are a professional translator. Translate the text into the following languages: {targets_json_str}.\n"
-                "Return the result as a valid JSON object where keys are the 2-letter language codes and values are the translations.\n"
-                "Example output: {\"es\": \"Hola\", \"fr\": \"Bonjour\"}\n"
-                "Do NOT add any other text."
-            )
-            
-            full_prompt = f"Text to translate:\n{text}"
-            
-            # Add user instructions if provided (ignoring brief defaults if we want, but better to just use it)
-            # We replace {lang} placeholder with generic term for the multi-target context
-            style_instructions = prompt.replace("{lang}", "the target languages")
-            if len(style_instructions) > 10:
-                 full_prompt = f"Instructions:\n{style_instructions}\n\n{full_prompt}"
-
-            client = openai.OpenAI(api_key=api_key)
-            
-            kwargs = {
-                "model": model_config["model"],
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": full_prompt}
-                ]
-            }
-            
-            # Enable JSON mode for compatible models
-            if "gpt-4" in model_config["model"] or "gpt-3.5-turbo-1106" in model_config["model"] or "gpt-3.5-turbo-0125" in model_config["model"]:
-                kwargs["response_format"] = {"type": "json_object"}
-
-            response = client.chat.completions.create(**kwargs)
-            
-            content = response.choices[0].message.content.strip()
-            
-            # Parse JSON
-            import json
+        # Rate limit jitter or small sleep to prevent burst usage
+        # With parallel requests, we might hit rate limits faster. But 429s should be handled by retries ideally.
+        # For simple logic, we rely on the executor not launching too many at once.
+        
+        max_retries = cfg.get("max_retries", 3)
+        
+        for attempt in range(max_retries):
             try:
+                # Construct system prompt for JSON
+                system_prompt = (
+                    f"You are a professional translator. Translate the text into the following languages: {targets_json}.\n"
+                    "Return the result as a valid JSON object where keys are the 2-letter language codes and values are the translations.\n"
+                    "Example output: {\"es\": \"Hola\", \"fr\": \"Bonjour\"}\n"
+                    "Do NOT add any other text."
+                )
+                
+                full_prompt = f"Text to translate:\n{text}"
+                
+                # Add user instructions
+                style_instructions = prmt.replace("{lang}", "the target languages")
+                if len(style_instructions) > 10:
+                     full_prompt = f"Instructions:\n{style_instructions}\n\n{full_prompt}"
+    
+                client = openai.OpenAI(api_key=apikey)
+                
+                kwargs = {
+                    "model": cfg["model"],
+                    "messages": [
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": full_prompt}
+                    ]
+                }
+                
+                if "gpt-4" in cfg["model"] or "gpt-5" in cfg["model"] or "gpt-3.5-turbo-1106" in cfg["model"] or "gpt-3.5-turbo-0125" in cfg["model"]:
+                    kwargs["response_format"] = {"type": "json_object"}
+    
+                response = client.chat.completions.create(**kwargs)
+                content = response.choices[0].message.content.strip()
+                
+                import json
                 translations_map = json.loads(content)
+                return index, translations_map
                 
-                # Assign to columns
-                for lang in languages:
-                    translation = translations_map.get(lang, "")
-                    out_col = f"{column}_Translated_{lang}"
-                    df_result.at[i, out_col] = translation
-                    
-            except json.JSONDecodeError:
-                logger.error(f"Failed to parse JSON response for row {i}: {content}")
-                
-            # Rate limit
-            time.sleep(model_config["rate_limit"])
-
-        except openai.AuthenticationError as e:
-             logger.error(f"Authentication error: {e}")
-             raise e
-        except Exception as e:
-            logger.error(f"Error translating row {i}: {e}")
+            except openai.RateLimitError:
+                if attempt < max_retries - 1:
+                    wait_time = (2 ** attempt) * 1 + 1 # 2, 3, 5 seconds...
+                    time.sleep(wait_time)
+                    continue
+                else:
+                    logger.error(f"Rate limit exceeded for row {index} after {max_retries} retries.")
+                    return index, {}
+            except Exception as e:
+                logger.error(f"Error translating row {index}: {e}")
+                return index, {} # Return empty on failure
+        
+        return index, {}
             
-    if progress_callback:
+    # --- Parallel Execution ---
+    max_workers = model_config.get("max_parallel_requests", 5)
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = []
+        
+        # Submit tasks
+        for i, text in enumerate(texts):
+            # Check cancel before submitting too many (not perfect but helps)
+            if cancel_event and cancel_event.is_set():
+                break
+            
+            # Skip empty early to save threads, or let worker handle it (worker handles it for consistency)
+            future = executor.submit(process_row, i, text, targets_json_str, prompt, model_config, api_key, cancel_event)
+            futures.append(future)
+
+        # Process results as they complete
+        completed_count = 0
+        for future in concurrent.futures.as_completed(futures):
+            # Check cancel
+            if cancel_event and cancel_event.is_set():
+                logger.info("Translation cancelled by user")
+                break # Stop processing results, context manager will wait for pending but we stop UI updates
+                
+            try:
+                idx, result_map = future.result()
+                
+                if result_map:
+                    for lang in languages:
+                        translation = result_map.get(lang, "")
+                        out_col = f"{column}_Translated_{lang}"
+                        df_result.at[idx, out_col] = translation
+            except Exception as e:
+                logger.error(f"Worker exception: {e}")
+                
+            completed_count += 1
+            if progress_callback:
+                progress_callback(f"Translated row {completed_count}/{total_items}...", completed_count / total_items)
+                
+            # Auto-save
+            if auto_save_path and completed_count % auto_save_interval == 0:
+                try:
+                    df_result.to_csv(auto_save_path, index=False)
+                    # logger.info(f"Auto-saved progress to {auto_save_path}") 
+                except Exception as e:
+                    logger.warning(f"Auto-save failed: {e}")
+
+    if cancel_event and cancel_event.is_set():
+        if progress_callback:
+             progress_callback("Cancelled.", 1.0)
+    elif progress_callback:
         progress_callback("Translation complete!", 1.0)
             
     return df_result
