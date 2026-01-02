@@ -7,6 +7,7 @@ import logging
 import traceback
 import threading
 import time
+import streamlit.components.v1 as components
 
 # Add the project root directory to Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -279,11 +280,22 @@ Constraint:
 
         # Cancel Button & Progress Loop
         if st.session_state.is_translating:
-            col_status, col_stop = st.columns([3, 1])
+            col_status, col_gif, col_stop = st.columns([3, 1, 1])
             
             with col_status:
                 status_text = st.empty()
                 progress_bar = st.progress(0)
+
+            with col_gif:
+                components.html(
+                    """
+                    <div class="tenor-gif-embed" data-postid="17461713593828281310" data-share-method="host" data-aspect-ratio="2.51515" data-width="100%">
+                        <a href="https://tenor.com/view/cat-gif-17461713593828281310">Cat Sticker</a>from <a href="https://tenor.com/search/cat-stickers">Cat Stickers</a>
+                    </div>
+                    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                    """,
+                    height=150
+                )
                 
             with col_stop:
                 if st.button("🛑 Stop & Save", type="secondary"):
@@ -336,6 +348,6 @@ Constraint:
 st.markdown("---")
 st.markdown("""
     <div style='text-align: center'>
-        <p>Made with ❤️ using Streamlit and OpenAI</p>
+        <p>Yiğit'ten sevgilerle ❤️...</p>
     </div>
 """, unsafe_allow_html=True)
